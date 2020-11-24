@@ -4,4 +4,10 @@ resource "azurerm_container_registry" "acr" {
   location                 = azurerm_resource_group.aks_rg.location
   sku                      = "Basic"
   admin_enabled            = true
+
+  provisioner "local-exec" {
+    command = "az acr import -n ${azurerm_container_registry.acr.name} --source docker.io/library/nginx:latest --image hello-world:latest"
+    //interpreter = ["Powershell", "-Command"] 
+  }
+
 }
