@@ -1,0 +1,6 @@
+*.exe
+**ACI/.terraform/*
+**AKS/.terraform/*
+**AKS2/Terraform/.terraform/*
+**ACR/.terraform/*
+*.tfstate*
