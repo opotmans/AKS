@@ -4,7 +4,7 @@ provider "azuredevops" {
 
 resource "azuredevops_project" "project" {
   project_name       = "Test1"
-  description        = "Ceci est un test"
+  description        = "Ceci est un test1"
 }
 
 
