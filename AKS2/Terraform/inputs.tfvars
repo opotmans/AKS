@@ -1,4 +1,4 @@
-resource_name = "testAKS"
+resource_name = "testAKS2"
 location = "West Europe"
 log_analytics_workspace_name = "LogAnalyticsworkspace"
 acr_name = "AzureContainerRegistry"

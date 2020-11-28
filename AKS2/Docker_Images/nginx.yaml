@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: testAKSAzureContainerRegistry.azurecr.io/nginx:v1
+        image: testaks2azurecontainerregistry.azurecr.io/hello-world:latest
         ports:
         - containerPort: 80
