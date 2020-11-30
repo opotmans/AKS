@@ -40,7 +40,7 @@ variable sku_tier {
 
 variable "kubernetes_version" {
   type        = string
-  default     = "1.17.8"
+  default     = "1.18.10"
   description = "Version of Kubernetes specified when creating the AKS managed cluster. If not specified, the latest recommended version will be used at provisioning time (but won't auto-upgrade)."
 }
 

@@ -5,6 +5,8 @@ acr_name = "AzureContainerRegistry"
 
 //Configuration addons of Azure Kubernetes Services
 
+//kubernetes_version= "1.17.8"
+
 sku_tier = "Free"
 
 addons = {

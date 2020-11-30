@@ -3,7 +3,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     location                        = azurerm_resource_group.aks_rg.location
     resource_group_name             = azurerm_resource_group.aks_rg.name
     dns_prefix                      = "${var.resource_name}akscluster"
-   // kubernetes_version              = var.kubernetes_version
+    kubernetes_version              = var.kubernetes_version
     node_resource_group             = "${var.resource_name}-worker"
     private_cluster_enabled         = false
     sku_tier                        = var.sku_tier
@@ -52,6 +52,12 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
             log_analytics_workspace_id = azurerm_log_analytics_workspace.clusterinsightsworkspace.id
         }
     }
+
+    provisioner "local-exec" {
+    command = "az aks update -n ${azurerm_kubernetes_cluster.aks_cluster.name} -g ${azurerm_resource_group.aks_rg.name} --attach-acr ${azurerm_container_registry.acr.name}"
+    //interpreter = ["Powershell", "-Command"] 
+  }
+
 }
 
 

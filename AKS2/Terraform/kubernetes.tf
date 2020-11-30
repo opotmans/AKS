@@ -8,7 +8,7 @@ client_key = base64decode(azurerm_kubernetes_cluster.aks_cluster.kube_config.0.c
 cluster_ca_certificate = base64decode(azurerm_kubernetes_cluster.aks_cluster.kube_config.0.cluster_ca_certificate)
 }
 
-//Definiion of a namespace "test"
+//Definition of a namespace "test"
 resource "kubernetes_namespace" "example" {
   metadata {
     name = "test"
@@ -20,19 +20,51 @@ resource "kubernetes_namespace" "example" {
 
 
 //Definition of a secret to connect to the ACR
-ressource "kubernetes_secret" "acr" {
+/* resource "kubernetes_secret" "acr" {
   metadata {
     name = "basic-auth"
+    namespace = kubernetes_namespace.example.metadata.0.name
   }
 
   data = {
-    username = "${azurerm_container_registry.acr.admin_username}"
-    password = "${azurerm_container_registry.acr.admin_password}"
+    username = azurerm_container_registry.acr.admin_username
+    password = azurerm_container_registry.acr.admin_password
   }
 
   type = "kubernetes.io/basic-auth"
 
-  depend_on = [
+  depends_on = [
       azurerm_container_registry.acr,
   ]
+} */
+
+resource "kubernetes_pod" "nginx" {
+  metadata {
+    name = "nginx-example"
+    namespace = kubernetes_namespace.example.metadata.0.name
+    
+    labels = {
+      App = "nginx"
+    }  
+  }
+
+  spec {
+    container {
+      image = "${azurerm_container_registry.acr.login_server}/hello-world:latest"
+      name  = "nginxexample"
+
+      port {
+        container_port = 80
+      }
+    }
+    image_pull_secrets {
+      name = kubernetes_secret.acr.metadata.0.name
+    }
+  }
+
+  depends_on = [
+      kubernetes_secret.acr,
+      kubernetes_namespace.example,
+  ]
+
 }
