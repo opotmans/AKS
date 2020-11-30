@@ -1,0 +1,76 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] azurerm_container_registry.acr (expand)" [label = "azurerm_container_registry.acr", shape = "box"]
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" [label = "azurerm_kubernetes_cluster.aks_cluster", shape = "box"]
+		"[root] azurerm_log_analytics_solution.clusterinsightssolution (expand)" [label = "azurerm_log_analytics_solution.clusterinsightssolution", shape = "box"]
+		"[root] azurerm_log_analytics_workspace.clusterinsightsworkspace (expand)" [label = "azurerm_log_analytics_workspace.clusterinsightsworkspace", shape = "box"]
+		"[root] azurerm_resource_group.aks_rg (expand)" [label = "azurerm_resource_group.aks_rg", shape = "box"]
+		"[root] azurerm_subnet.aks_subnet (expand)" [label = "azurerm_subnet.aks_subnet", shape = "box"]
+		"[root] azurerm_virtual_network.aks_vnet (expand)" [label = "azurerm_virtual_network.aks_vnet", shape = "box"]
+		"[root] kubernetes_namespace.example (expand)" [label = "kubernetes_namespace.example", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/azurerm\"]" [label = "provider[\"registry.terraform.io/hashicorp/azurerm\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/kubernetes\"]" [label = "provider[\"registry.terraform.io/hashicorp/kubernetes\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"]" [label = "provider[\"registry.terraform.io/hashicorp/random\"]", shape = "diamond"]
+		"[root] random_integer.log_analytics_workspace_name_suffix (expand)" [label = "random_integer.log_analytics_workspace_name_suffix", shape = "box"]
+		"[root] var.acr_name" [label = "var.acr_name", shape = "note"]
+		"[root] var.addons" [label = "var.addons", shape = "note"]
+		"[root] var.dns_service_ip" [label = "var.dns_service_ip", shape = "note"]
+		"[root] var.docker_cidr" [label = "var.docker_cidr", shape = "note"]
+		"[root] var.kubernetes_version" [label = "var.kubernetes_version", shape = "note"]
+		"[root] var.location" [label = "var.location", shape = "note"]
+		"[root] var.log_analytics_workspace_name" [label = "var.log_analytics_workspace_name", shape = "note"]
+		"[root] var.resource_name" [label = "var.resource_name", shape = "note"]
+		"[root] var.service_cidr" [label = "var.service_cidr", shape = "note"]
+		"[root] var.sku_tier" [label = "var.sku_tier", shape = "note"]
+		"[root] var.system_node_pool" [label = "var.system_node_pool", shape = "note"]
+		"[root] azurerm_container_registry.acr (expand)" -> "[root] azurerm_resource_group.aks_rg (expand)"
+		"[root] azurerm_container_registry.acr (expand)" -> "[root] provisioner.local-exec"
+		"[root] azurerm_container_registry.acr (expand)" -> "[root] var.acr_name"
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" -> "[root] azurerm_log_analytics_workspace.clusterinsightsworkspace (expand)"
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" -> "[root] azurerm_subnet.aks_subnet (expand)"
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" -> "[root] var.addons"
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" -> "[root] var.kubernetes_version"
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" -> "[root] var.sku_tier"
+		"[root] azurerm_kubernetes_cluster.aks_cluster (expand)" -> "[root] var.system_node_pool"
+		"[root] azurerm_log_analytics_solution.clusterinsightssolution (expand)" -> "[root] azurerm_log_analytics_workspace.clusterinsightsworkspace (expand)"
+		"[root] azurerm_log_analytics_workspace.clusterinsightsworkspace (expand)" -> "[root] azurerm_resource_group.aks_rg (expand)"
+		"[root] azurerm_log_analytics_workspace.clusterinsightsworkspace (expand)" -> "[root] random_integer.log_analytics_workspace_name_suffix (expand)"
+		"[root] azurerm_log_analytics_workspace.clusterinsightsworkspace (expand)" -> "[root] var.log_analytics_workspace_name"
+		"[root] azurerm_resource_group.aks_rg (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/azurerm\"]"
+		"[root] azurerm_resource_group.aks_rg (expand)" -> "[root] var.location"
+		"[root] azurerm_resource_group.aks_rg (expand)" -> "[root] var.resource_name"
+		"[root] azurerm_subnet.aks_subnet (expand)" -> "[root] azurerm_virtual_network.aks_vnet (expand)"
+		"[root] azurerm_virtual_network.aks_vnet (expand)" -> "[root] azurerm_resource_group.aks_rg (expand)"
+		"[root] kubernetes_namespace.example (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/kubernetes\"]"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] azurerm_container_registry.acr (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] azurerm_log_analytics_solution.clusterinsightssolution (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] kubernetes_namespace.example (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.client_certificate (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.fqdn (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.identity (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.kube_config (expand)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.dns_service_ip"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.docker_cidr"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] var.service_cidr"
+		"[root] output.client_certificate (expand)" -> "[root] azurerm_kubernetes_cluster.aks_cluster (expand)"
+		"[root] output.fqdn (expand)" -> "[root] azurerm_kubernetes_cluster.aks_cluster (expand)"
+		"[root] output.identity (expand)" -> "[root] azurerm_kubernetes_cluster.aks_cluster (expand)"
+		"[root] output.kube_config (expand)" -> "[root] azurerm_kubernetes_cluster.aks_cluster (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)" -> "[root] azurerm_container_registry.acr (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)" -> "[root] azurerm_kubernetes_cluster.aks_cluster (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)" -> "[root] azurerm_log_analytics_solution.clusterinsightssolution (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/kubernetes\"] (close)" -> "[root] kubernetes_namespace.example (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/kubernetes\"]" -> "[root] azurerm_kubernetes_cluster.aks_cluster (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)" -> "[root] random_integer.log_analytics_workspace_name_suffix (expand)"
+		"[root] provisioner.local-exec (close)" -> "[root] azurerm_container_registry.acr (expand)"
+		"[root] random_integer.log_analytics_workspace_name_suffix (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"]"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/azurerm\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/kubernetes\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/random\"] (close)"
+		"[root] root" -> "[root] provisioner.local-exec (close)"
+	}
+}
+
