@@ -60,7 +60,7 @@ variable "system_node_pool" {
 
   default = {
       node_count                        = 1
-      vm_size                           = "Standard_D2_v2"
+      vm_size                           = "Standard_DS4_v2"
       cluster_auto_scaling_min_count    = 3
       cluster_auto_scaling_max_count    = 5
       cluster_auto_scaling              = false

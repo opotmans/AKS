@@ -57,13 +57,13 @@ resource "kubernetes_pod" "nginx" {
         container_port = 80
       }
     }
-    image_pull_secrets {
+    /* image_pull_secrets {
       name = kubernetes_secret.acr.metadata.0.name
-    }
+    } */
   }
 
   depends_on = [
-      kubernetes_secret.acr,
+      //kubernetes_secret.acr,
       kubernetes_namespace.example,
   ]
 
