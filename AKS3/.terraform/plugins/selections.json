@@ -1,0 +1,22 @@
+{
+  "registry.terraform.io/gavinbunney/kubectl": {
+    "hash": "h1:8Ncr97QIBYSbke+9UZEvCXQ1Zcdbxr+/RIqOPUcyNRc=",
+    "version": "1.9.4"
+  },
+  "registry.terraform.io/hashicorp/azurerm": {
+    "hash": "h1:dlbgdfF1DVKIOWS7/to8Qmk/8HRq7anWNNHxTBTMejM=",
+    "version": "2.39.0"
+  },
+  "registry.terraform.io/hashicorp/kubernetes": {
+    "hash": "h1:0OglC1HmT3NqMn4A83dXbeLp3D6Qhv1FtlwcwyzjeBY=",
+    "version": "1.13.3"
+  },
+  "registry.terraform.io/hashicorp/local": {
+    "hash": "h1:SlDBzk4mI74zgQY9JgNygoI2WRJ4ZIgCN3IkWRon2Ng=",
+    "version": "2.0.0"
+  },
+  "registry.terraform.io/hashicorp/random": {
+    "hash": "h1:+JUEdzBH7Od9JKdMMAIJlX9v6P8jfbMR7V4/FKXLAgY=",
+    "version": "3.0.0"
+  }
+}
