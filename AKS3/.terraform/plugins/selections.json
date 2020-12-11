@@ -15,6 +15,10 @@
     "hash": "h1:SlDBzk4mI74zgQY9JgNygoI2WRJ4ZIgCN3IkWRon2Ng=",
     "version": "2.0.0"
   },
+  "registry.terraform.io/hashicorp/null": {
+    "hash": "h1:GnUYWtyIRXT2ruijra2HtwGDb4z3Qk62ZFc1lAOlevo=",
+    "version": "3.0.0"
+  },
   "registry.terraform.io/hashicorp/random": {
     "hash": "h1:+JUEdzBH7Od9JKdMMAIJlX9v6P8jfbMR7V4/FKXLAgY=",
     "version": "3.0.0"

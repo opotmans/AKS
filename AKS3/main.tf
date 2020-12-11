@@ -31,5 +31,30 @@ module "Azure_Kubernetes" {
     oms_agent = true
     kubernetes_dashboard = true
     azure_policy = false
+  }
 }
+module "Istio_Infra" {
+  source = "./Modules/Istio_Infra"
+  aks_config_file = module.Azure_Kubernetes.aks_config_file_name
+  aks_host = module.Azure_Kubernetes.aks_host
+  aks_username =  module.Azure_Kubernetes.aks_username
+  aks_password =  module.Azure_Kubernetes.aks_password
+  aks_client_certificate =  module.Azure_Kubernetes.aks_client_certificate
+  aks_client_key = module.Azure_Kubernetes.aks_client_key
+  aks_ca_certificate = module.Azure_Kubernetes.aks_ca_certificate
 }
+
+module "Bookinfo" {
+  source = "./Modules/Applications/Bookinfo"
+  aks_config_file = module.Azure_Kubernetes.aks_config_file_name
+  aks_host = module.Azure_Kubernetes.aks_host
+  aks_username =  module.Azure_Kubernetes.aks_username
+  aks_password =  module.Azure_Kubernetes.aks_password
+  aks_client_certificate =  module.Azure_Kubernetes.aks_client_certificate
+  aks_client_key = module.Azure_Kubernetes.aks_client_key
+  aks_ca_certificate = module.Azure_Kubernetes.aks_ca_certificate
+  environment = "bookinfo"
+}
+
+
+
