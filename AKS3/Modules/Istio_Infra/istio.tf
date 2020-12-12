@@ -62,14 +62,9 @@ resource "local_file" "istio-config" {
 }
 
 resource "null_resource" "istio" {
- /*  triggers = {
-    always_run = timestamp()
-  } */
   provisioner "local-exec" {
     command = "${path.module}/bin/istioctl.exe manifest apply -f ${path.module}/config/istio-aks.yaml --kubeconfig .kube/${var.aks_config_file}"
     interpreter = ["PowerShell", "-Command"]
   }
   depends_on = [kubernetes_secret.grafana, kubernetes_secret.kiali, local_file.istio-config]
 }
-
-//istio/istio_bin/bin/istioctl.exe manifest apply -f istio/istio-aks.yaml --kubeconfig .kube/testAKS2Cluster
